@@ -51,7 +51,7 @@ async function run() {
       //POST PLACE ORDER API
       app.post("/placeorder", async (req, res) => {
          const orderData = req.body;
-         const result = await appointmentsCollection.insertOne(orderData);
+         const result = await ordersCollection.insertOne(orderData);
          res.json(result);
       });
    } finally {
