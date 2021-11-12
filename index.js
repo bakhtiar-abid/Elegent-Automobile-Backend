@@ -7,6 +7,12 @@ const ObjectId = require("mongodb").ObjectId;
 
 const port = process.env.PORT || 5000;
 
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+
+admin.initializeApp({
+   credential: admin.credential.cert(serviceAccount),
+});
+
 // middleware
 
 app.use(cors());
@@ -19,6 +25,18 @@ const client = new MongoClient(uri, {
 });
 
 console.log(uri);
+
+async function verifyToken(req, res, next) {
+   if (req.headers?.authorization?.startsWith("Bearer ")) {
+      const token = req.headers.authorization.split(" ")[1];
+
+      try {
+         const decodedUser = await admin.auth().verifyIdToken(token);
+         req.decodedEmail = decodedUser.email;
+      } catch {}
+   }
+   next();
+}
 
 async function run() {
    try {
@@ -58,7 +76,7 @@ async function run() {
       });
 
       // GET USERS ORDER API
-      app.get("/placeorder/:email", async (req, res) => {
+      app.get("/placeorder/:email", verifyToken, async (req, res) => {
          const email = req.params.email;
 
          const query = { email: email };
@@ -74,6 +92,17 @@ async function run() {
          const result = await usersCollection.insertOne(user);
          console.log(result);
          res.json(result);
+      });
+
+      //Cancel API for USERS
+      // DELETE PLAN API
+
+      app.delete("/placeorder/:id", async (req, res) => {
+         console.log(req.params.id);
+         const result = await ordersCollection.deleteOne({
+            _id: ObjectId(req.params.id),
+         });
+         res.send(result);
       });
    } finally {
       // await client.close();

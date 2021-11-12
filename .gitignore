@@ -1,3 +1,4 @@
 #dependencies
 /node_modules
 .env
+elegent-automobile-firebase-adminsdk.json
