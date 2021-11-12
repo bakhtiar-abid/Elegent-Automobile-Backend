@@ -45,8 +45,8 @@ async function run() {
          const id = req.params.id;
          console.log("getting specific plan", id);
          const query = { _id: ObjectId(id) };
-         const orders = await vehiclesCollection.findOne(query);
-         res.json(orders);
+         const vehicle = await vehiclesCollection.findOne(query);
+         res.json(vehicle);
       });
 
       //POST PLACE ORDER API
@@ -64,8 +64,8 @@ async function run() {
          const query = { email: email };
 
          const cursor = ordersCollection.find(query);
-         const appointments = await cursor.toArray();
-         res.json(appointments);
+         const userOrder = await cursor.toArray();
+         res.json(userOrder);
       });
 
       //USERS API
