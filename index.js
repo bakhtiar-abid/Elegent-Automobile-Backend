@@ -26,7 +26,7 @@ async function run() {
       console.log("Connected to MongoDB");
       const database = client.db("elegent_automobile");
       const vehiclesCollection = database.collection("vehicles");
-      const usersCollection = database.collection("users");
+      const ordersCollection = database.collection("orders");
 
       app.get("/vehicles", async (req, res) => {
          //  const email = req.query.email;
