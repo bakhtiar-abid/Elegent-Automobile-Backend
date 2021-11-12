@@ -28,7 +28,7 @@ async function run() {
       const ordersCollection = database.collection("orders");
       const usersCollection = database.collection("users");
 
-      app.get("/orders", async (req, res) => {
+      app.get("/vehicles", async (req, res) => {
          //  const email = req.query.email;
          //  const date = req.query.date;
 
@@ -40,12 +40,19 @@ async function run() {
       });
 
       //GET Single Item API
-      app.get("/orders/:id", async (req, res) => {
+      app.get("/vehicles/:id", async (req, res) => {
          const id = req.params.id;
          console.log("getting specific plan", id);
          const query = { _id: ObjectId(id) };
          const service = await ordersCollection.findOne(query);
          res.json(service);
+      });
+
+      //POST PLACE ORDER API
+      app.post("/placeorder", async (req, res) => {
+         const orderData = req.body;
+         const result = await appointmentsCollection.insertOne(orderData);
+         res.json(result);
       });
    } finally {
       // await client.close();
