@@ -25,7 +25,7 @@ async function run() {
       await client.connect();
       console.log("Connected to MongoDB");
       const database = client.db("elegent_automobile");
-      const ordersCollection = database.collection("orders");
+      const vehiclesCollection = database.collection("vehicles");
       const usersCollection = database.collection("users");
 
       app.get("/vehicles", async (req, res) => {
@@ -34,7 +34,7 @@ async function run() {
 
          //  const query = { email: email, date: date };
 
-         const cursor = ordersCollection.find({});
+         const cursor = vehiclesCollection.find({});
          const result = await cursor.toArray();
          res.json(result);
       });
@@ -44,7 +44,7 @@ async function run() {
          const id = req.params.id;
          console.log("getting specific plan", id);
          const query = { _id: ObjectId(id) };
-         const service = await ordersCollection.findOne(query);
+         const service = await vehiclesCollection.findOne(query);
          res.json(service);
       });
 
