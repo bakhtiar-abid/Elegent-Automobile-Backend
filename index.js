@@ -27,6 +27,7 @@ async function run() {
       const database = client.db("elegent_automobile");
       const vehiclesCollection = database.collection("vehicles");
       const ordersCollection = database.collection("orders");
+      const usersCollection = database.collection("users");
 
       app.get("/vehicles", async (req, res) => {
          //  const email = req.query.email;
@@ -51,7 +52,16 @@ async function run() {
       //POST PLACE ORDER API
       app.post("/placeorder", async (req, res) => {
          const orderData = req.body;
+         console.log("orderData", orderData);
          const result = await ordersCollection.insertOne(orderData);
+         res.json(result);
+      });
+
+      //USERS API
+      app.post("/users", async (req, res) => {
+         const user = req.body;
+         const result = await usersCollection.insertOne(user);
+         console.log(result);
          res.json(result);
       });
    } finally {
