@@ -173,6 +173,13 @@ async function run() {
          const result = await ordersCollection.deleteOne(query);
          res.json(result);
       });
+      //DELETE API FOR VEHICLE
+      app.delete("/vehicles/:id", async (req, res) => {
+         const id = req.params.id;
+         const query = { _id: ObjectId(id) };
+         const result = await vehiclesCollection.deleteOne(query);
+         res.json(result);
+      });
    } finally {
       // await client.close();
    }
