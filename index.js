@@ -49,14 +49,19 @@ async function run() {
       const usersCollection = database.collection("users");
       const reviewCollection = database.collection("review");
 
+      //GET VEHICLES API
       app.get("/vehicles", async (req, res) => {
-         //  const email = req.query.email;
-         //  const date = req.query.date;
-
-         //  const query = { email: email, date: date };
-
          const cursor = vehiclesCollection.find({});
          const result = await cursor.toArray();
+         res.json(result);
+      });
+
+      //POST VEHICLES API
+
+      app.post("/vehicles", async (req, res) => {
+         const addData = req.body;
+         console.log("orderData", addData);
+         const result = await vehiclesCollection.insertOne(addData);
          res.json(result);
       });
 
