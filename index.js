@@ -119,6 +119,27 @@ async function run() {
          res.json(result);
       });
 
+      //UPDATE API
+      app.put("/placeorder/:id", async (req, res) => {
+         const id = req.params.id;
+         const updatedStatus = req.body;
+         console.log(updatedStatus);
+         const filter = { _id: ObjectId(id) };
+         const options = { upsert: true };
+         const updateDoc = {
+            $set: {
+               status: "shipped",
+            },
+         };
+         const result = await ordersCollection.updateOne(
+            filter,
+            updateDoc,
+            options
+         );
+         console.log("updating", id);
+         res.json(result);
+      });
+
       //ADMIN API
       app.put("/users/admin", verifyToken, async (req, res) => {
          const user = req.body;
