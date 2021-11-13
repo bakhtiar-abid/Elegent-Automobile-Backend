@@ -104,6 +104,13 @@ async function run() {
          res.json(result);
       });
 
+      //GET REVIEW API
+      app.get("/review", async (req, res) => {
+         const cursor = reviewCollection.find({});
+         const result = await cursor.toArray();
+         res.json(result);
+      });
+
       //Cancel API for USERS
 
       app.delete("/deleorder/:id", async (req, res) => {
