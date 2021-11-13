@@ -47,6 +47,7 @@ async function run() {
       const vehiclesCollection = database.collection("vehicles");
       const ordersCollection = database.collection("orders");
       const usersCollection = database.collection("users");
+      const reviewCollection = database.collection("review");
 
       app.get("/vehicles", async (req, res) => {
          //  const email = req.query.email;
@@ -77,7 +78,7 @@ async function run() {
       });
 
       // GET USERS ORDER API
-      app.get("/placeorder/:email", verifyToken, async (req, res) => {
+      app.get("/placeorder/:email", async (req, res) => {
          const email = req.params.email;
 
          const query = { email: email };
@@ -95,14 +96,21 @@ async function run() {
          res.json(result);
       });
 
+      //review api
+      app.post("/review", async (req, res) => {
+         const user = req.body;
+         const result = await reviewCollection.insertOne(user);
+         console.log(result);
+         res.json(result);
+      });
+
       //Cancel API for USERS
 
-      app.delete("/placeorder/:id", async (req, res) => {
-         console.log(req.params.id);
-         const result = await ordersCollection.deleteOne({
-            _id: ObjectId(req.params.id),
-         });
-         res.send(result);
+      app.delete("/deleorder/:id", async (req, res) => {
+         const id = req.params.id;
+         const query = { _id: ObjectId(id) };
+         const result = await ordersCollection.deleteOne(query);
+         res.json(result);
       });
    } finally {
       // await client.close();
