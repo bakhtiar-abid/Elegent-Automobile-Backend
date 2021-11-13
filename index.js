@@ -82,6 +82,11 @@ async function run() {
          res.json(result);
       });
 
+      app.get("/placeorder", async (req, res) => {
+         const cursor = ordersCollection.find({});
+         const result = await cursor.toArray();
+         res.json(result);
+      });
       // GET USERS ORDER API
       app.get("/placeorder/:email", async (req, res) => {
          const email = req.params.email;
