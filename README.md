@@ -1,7 +1,7 @@
 # **Elegent Automobile**
 
 <a  href="https://elegent-automobile.web.app/">
-Elegent Automobile
+<img  width="100%"  height="100%"  src="https://i.ibb.co/ZYrn99w/elegent-automobile.png"/>
 </a>
 
 ## About & Features
@@ -30,6 +30,6 @@ Elegent Automobile
 
 <hr/>
 
-**[Front-end Repository](https://github.com/programming-hero-web-course-4/niche-website-client-side-bakhtiarabid)**
+**[Front-end Repository](https://github.com/bakhtiarabid/Elegent-Automobile-Front-End)**
 
 <hr/>
