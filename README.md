@@ -9,7 +9,7 @@
 **Elegent Automobile** is a full-stack single-page car sales service provider web app.
 
 -  Login system with firebase, private routes and dashboard for admins and users.
--  Users can order services, monitor their orderlist and give a review, delete or update the review.
+-  Users can order services, monitor their orderlist and give a review, delete or pay the order.
 -  Admin can add services, update and delete services.
 -  Admin can add new admins and can change the status of orderlist.
 
@@ -30,6 +30,6 @@
 
 <hr/>
 
-**[Front-end Repository](https://github.com/programming-hero-web-course-4/niche-website-client-side-bakhtiarabid)**
+**[Back-end Repository](https://github.com/bakhtiarabid/Elegent-Automobile-Backend)**
 
 <hr/>
