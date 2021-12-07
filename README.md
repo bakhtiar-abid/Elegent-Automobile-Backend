@@ -1,7 +1,7 @@
 # **Elegent Automobile**
 
 <a  href="https://elegent-automobile.web.app/">
-<img  width="100%"  height="100%"  src="https://i.ibb.co/ZYrn99w/elegent-automobile.png"/>
+<img  width="100%"  height="100%"  src="https://i.ibb.co/cQvCnpY/Screenshot-1.png"/>
 </a>
 
 ## About & Features
