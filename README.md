@@ -1,7 +1,7 @@
 # **Elegent Automobile**
 
 <a  href="https://elegent-automobile.web.app/">
-<img  width="100%"  height="100%"  src="https://i.ibb.co/ZYrn99w/elegent-automobile.png"/>
+<img  width="100%"  height="100%"  src="https://i.ibb.co/cQvCnpY/Screenshot-1.png"/>
 </a>
 
 ## About & Features
@@ -9,7 +9,7 @@
 **Elegent Automobile** is a full-stack single-page car sales service provider web app.
 
 -  Login system with firebase, private routes and dashboard for admins and users.
--  Users can order services, monitor their orderlist and give a review, delete or update the review.
+-  Users can order services, monitor their orderlist and give a review, delete or pay the order.
 -  Admin can add services, update and delete services.
 -  Admin can add new admins and can change the status of orderlist.
 
@@ -30,6 +30,6 @@
 
 <hr/>
 
-**[Front-end Repository](https://github.com/bakhtiarabid/Elegent-Automobile-Front-End)**
+**[Back-end Repository](https://github.com/bakhtiarabid/Elegent-Automobile-Backend)**
 
 <hr/>
